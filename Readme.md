@@ -1,9 +1,6 @@
-# Backend Assignement
+# Backend Project
 ## Project Name: Vessel tracking System
-### Question Link
-```
-https://shippioinc.notion.site/Backend-Coding-Assignment-72da02b75f2943b598d4c0245b0fb3f0
-```
+
 ##  Problem statement
 ### Vessel tracking
 
@@ -18,7 +15,7 @@ Write a simple API that allows consumers to manage vessels. The APIs should allo
 - Owner ID (string)
 - NACCS code (string) which is unique
 
-### Bonus
+### Bonus Problem
 Write a simple API that allows consumers to manage vessel voyages. A voyage is the transit of a vessel that takes it from one location to another between specified times. Traveling from LA to NYC on January 1st from 10:00 am to 1:00 pm is a single voyage for an airline. The API should allow the consumer to create, update, and retrieve the current voyage for a single vessel.
 
 ### Methods handled in this project
@@ -178,3 +175,222 @@ make codegen-proto
     └── logger.go
 
 ```
+sample Input and output while doing testing ( do it yourself This is for reference )
+> [!IMPORTANT]
+> Server is running on localhost:8080
+
+
+#### CreateVessel
+Request:
+```
+{
+    "vessel": {
+        "naccs_code": "RTID",
+        "name": "vesseltesting",
+        "owner_id": "vaibhav"
+    }
+}
+```
+response:
+```
+{
+    "id": 7
+}
+```
+#### GetVessel
+Request:
+```
+{
+    "id": 7
+}
+```
+
+Response :
+```
+{
+    "vessel": {
+        "id": 7,
+        "name": "vesseltesting",
+        "owner_id": "vaibhav",
+        "naccs_code": "RTID"
+    }
+}
+```
+
+### UpdateVessel
+
+Request:
+```
+{
+    "vessel": {
+        "id": 7,
+        "naccs_code": "RTID",
+        "name": "Vessel testing Updaed",
+        "owner_id": "Owner updated "
+    }
+}
+```
+Response:
+```
+{
+    "vessel": {
+        "id": 7,
+        "name": "Vessel testing Updaed",
+        "owner_id": "Owner updated ",
+        "naccs_code": "RTID"
+    }
+}
+```
+
+### GetVessels Give list of vessels in database
+Request
+```
+{}
+```
+Response :
+```
+{
+    "vessels": [
+        {
+            "id": 1,
+            "name": "sint",
+            "owner_id": "in ullamco",
+            "naccs_code": "update"
+        },
+        {
+            "id": 4,
+            "name": "abe",
+            "owner_id": "sit laboris dolor",
+            "naccs_code": "abe"
+        },
+        {
+            "id": 5,
+            "name": "abe",
+            "owner_id": "sit laboris dolor",
+            "naccs_code": "122"
+        },
+        {
+            "id": 6,
+            "name": "vessel1",
+            "owner_id": "vaibhav",
+            "naccs_code": "RG1Y"
+        },
+        {
+            "id": 7,
+            "name": "Vessel testing Updaed",
+            "owner_id": "Owner updated ",
+            "naccs_code": "RTID"
+        }
+    ]
+}
+```
+
+### CreateVoyage
+Request:
+```
+{
+    "voyage": {
+        "arrival_location": "JPN",
+        "arrival_time": {
+            "nanos": 0,
+            "seconds": "60"
+        },
+        "departure_location": "UK",
+        "departure_time": {
+            "nanos": 0,
+            "seconds": "50"
+        },
+        "details": "details odf voyage",
+        "vessel_id": 1
+    }
+}
+```
+Response :
+```
+{
+    "id": 13
+}
+```
+### UpdateVoyage
+Request:
+```
+{
+    "voyage": {
+        "arrival_location": "JPN",
+        "arrival_time": {
+            "nanos": 0,
+            "seconds": "60"
+        },
+        "departure_location": "USA",
+        "departure_time": {
+            "nanos": 0,
+            "seconds": "50"
+        },
+        "details": "details updated ",
+        "id": 13,
+        "vessel_id": 1
+    }
+}
+```
+Response:
+```
+{
+    "voyage": {
+        "id": 13,
+        "vessel_id": 1,
+        "departure_location": "USA",
+        "arrival_location": "JPN",
+        "departure_time": {
+            "seconds": "50",
+            "nanos": 0
+        },
+        "arrival_time": {
+            "seconds": "60",
+            "nanos": 0
+        },
+        "details": "details updated "
+    }
+}
+```
+### GetVoyage
+Request:
+```
+{
+    "vessel_id": 1,
+    "voyage_id": 13
+}
+```
+Response:
+```
+{
+    "voyage": {
+        "id": 13,
+        "vessel_id": 1,
+        "departure_location": "USA",
+        "arrival_location": "JPN",
+        "departure_time": {
+            "seconds": "50",
+            "nanos": 0
+        },
+        "arrival_time": {
+            "seconds": "60",
+            "nanos": 0
+        },
+        "details": "details updated "
+    }
+}
+```
+
+### Improvement points in future not implemented for the time being
+- add DeleteVessel endpoint
+- add DeleteVoyage endpoint
+- Good validations before entring data
+- add lints checker
+
+## End
+#### Vaibhav Gupta
+
+1997guptavaibhav@gmail.com
+
+Github:
+ [@97vaibhav](https://github.com/97vaibhav)
