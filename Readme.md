@@ -43,6 +43,12 @@ service VesselService {
 - Docker
 - Grpc libraries
 - protoc
+- should have these libraries installed for go grpc, mysql, proto-gen do it by running
+```
+go get -u google.golang.org/grpc \
+    && go get -u github.com/golang/protobuf/protoc-gen-go \
+    && go get github.com/go-sql-driver/mysql@latest
+```
 
 ## Tech used
 - Golang
